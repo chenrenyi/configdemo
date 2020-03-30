@@ -1,0 +1,22 @@
+server:
+  port: 20051
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: bms
+          uri: http://bms.dev.cfpamf.com/
+          predicates:
+            - Path=/api/bms/*
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20050/eureka/
+
